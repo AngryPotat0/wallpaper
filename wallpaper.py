@@ -5,11 +5,14 @@ import os
 import sys
 
 command = sys.argv
-path = "C:\\Users\\dell\\Desktop\\wh"
+path = "C:\\Users\\dell\\Desktop\\wh\\"
 if(len(command) == 1):
     file = os.listdir(path)
-    filepath = path + "\\" + random.choice(file)
-    print("wallpaper change to:"filepath)
+    filepath = path + random.choice(file)
     ctypes.windll.user32.SystemParametersInfoW(20, 0, filepath, 0)
 else:
-    pass
+    if(command[1] == "from"):
+        path = path + command[2] + "\\"
+        file = os.listdir(path)
+        filepath = path + random.choice(file)
+        ctypes.windll.user32.SystemParametersInfoW(20, 0, filepath, 0)
